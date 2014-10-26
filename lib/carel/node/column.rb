@@ -4,6 +4,7 @@ module Carel
       include Node
       include Predicatable
       include Functionable
+      include Aliasable
 
       attr_reader :table, :name
 
@@ -11,10 +12,6 @@ module Carel
         @table  = table
         @name   = name
         @as     = nil
-      end
-
-      def as(_alias)
-        AliasedColumn.new(self, _alias)
       end
 
       def order(direction = nil)
