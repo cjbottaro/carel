@@ -18,6 +18,10 @@ module Carel
         SelectStatement.new(self).project(*projections)
       end
 
+      def insert(*columns)
+        InsertStatement.new(self).columns(*columns)
+      end
+
     end
   end
 end

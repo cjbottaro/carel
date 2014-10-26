@@ -35,6 +35,12 @@ module Carel
       case value
       when String, Symbol
         "'#{value}'"
+      when Hash
+        "{" + value.map{ |k, v| "#{quote(k)} : #{quote(v)}" }.join(", ") + "}"
+      when Set
+        "{" + value.map{ |v| quote(v) }.join(", ") + "}"
+      when Array
+        "[" + value.map{ |v| quote(v) }.join(", ") + "]"
       else
         value
       end
