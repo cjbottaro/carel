@@ -22,9 +22,8 @@ module Carel
       end
       s += " SET " + set_clause.join(", ")
 
-      # Copy/paste job from SelectStatement.
-      if !where_nodes.empty?
-        s += " WHERE " + where_nodes.map{ |node| visit(node) }.join(" AND ")
+      if !where_clause.empty?
+        s += " WHERE #{visit(where_clause)}"
       end
 
       s
