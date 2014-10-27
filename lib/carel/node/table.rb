@@ -22,6 +22,10 @@ module Carel
         InsertStatement.new(self).columns(*columns)
       end
 
+      def update(values)
+        UpdateStatement.new(self).set(values)
+      end
+
     end
   end
 end

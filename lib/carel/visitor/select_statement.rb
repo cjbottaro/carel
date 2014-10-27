@@ -12,7 +12,11 @@ module Carel
       end
 
       str << "FROM" << visit(from_node)
-      str << "WHERE" << where_nodes.map{ |node| visit(node) }.join(" AND ") if !where_nodes.empty?
+
+      if !where_nodes.empty?
+        str << "WHERE" << where_nodes.map{ |node| visit(node) }.join(" AND ")
+      end
+
       if !order_nodes.empty?
         str << "ORDER BY" << order_nodes.map{ |node| visit(node) }.join(", ")
       end
