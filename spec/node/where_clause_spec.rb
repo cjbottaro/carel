@@ -5,7 +5,10 @@ describe Carel::Node::WhereClause do
   context "#to_cql" do
 
     subject{ |example| example.description }
-    def where(*args); Carel::Node::WhereClause.new(*args); end
+
+    def where(*args)
+      Carel::Node::WhereClause.new(*args)
+    end
 
     it "id = 1 AND name = 'chris'" do
       id = column(:id)
