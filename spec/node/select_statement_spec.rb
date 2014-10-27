@@ -2,20 +2,18 @@ require "spec_helper"
 
 describe Carel::Node::SelectStatement do
 
-
   context "#to_cql" do
 
     subject{ |example| example.description }
-    def table(name); Carel::Node::Table.new(name); end
-    def assert_cql(node); expect(node.to_cql).to eq(subject); end
+
     let(:users_table){ table(:users) }
+    let(:keyspace){ Carel::Node::Keyspace.new(:carel_development) }
 
     it "SELECT * FROM users" do
       assert_cql table(:users).select("*")
     end
 
     it "SELECT * FROM carel_development.users" do
-      keyspace = Carel::Node::Keyspace.new(:carel_development)
       table = keyspace[:users]
       assert_cql table.select("*")
     end

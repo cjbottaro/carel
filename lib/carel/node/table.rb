@@ -11,7 +11,7 @@ module Carel
       end
 
       def [](column_name)
-        Column.new(self, column_name)
+        Column.new(column_name, table: self)
       end
 
       def select(*projections)

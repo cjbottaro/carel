@@ -12,7 +12,7 @@ module Carel
           node = column
         when Symbol, String
           # This is so .update(symbol: :blah) works.
-          column = Node::Column.new(table_node, column)
+          column = Node::Column.new(column, table: table_node)
           node = Node::UpdateValue.new(column, :assign)
         else
           raise(ArgumentError, "unexpected node: #{column}")

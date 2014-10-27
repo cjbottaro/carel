@@ -33,7 +33,7 @@ module Carel
 
       def handle_hash_condition(hash)
         hash.each do |column, value|
-          column = Column.new(nil, column) unless column.kind_of?(Column)
+          column = Column.new(column) unless column.kind_of?(Column)
           conditions << column.eq(value)
         end
       end

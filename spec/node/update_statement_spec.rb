@@ -5,8 +5,6 @@ describe Carel::Node::UpdateStatement do
   context "#to_cql" do
 
     subject{ |example| example.description }
-    def table(name); Carel::Node::Table.new(name); end
-    def assert_cql(node); expect(node.to_cql).to eq(subject); end
     let(:keyspace){ Carel::Node::Keyspace.new(:carel_development) }
     let(:users_table){ table(:users) }
     let(:favorites){ users_table[:favorites] }

@@ -8,9 +8,9 @@ module Carel
 
       attr_reader :table, :name
 
-      def initialize(table, name)
-        @table  = table
+      def initialize(name, options = {})
         @name   = name
+        @table  = options[:table]
         @as     = nil
       end
 
