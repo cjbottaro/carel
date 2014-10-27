@@ -3,12 +3,12 @@ module Carel
     class UpdateStatement
       include Node
 
-      attr_reader :table_node, :values, :where_nodes
+      attr_reader :table_node, :values, :where_clause
 
       def initialize(table_node)
         @table_node = table_node
         @values = {}
-        @where_nodes = []
+        @where_clause = WhereClause.new
       end
 
       def set(values)
@@ -16,24 +16,8 @@ module Carel
         self
       end
 
-      # Copy/paste from SelectStatement
-      def where(*where_nodes)
-        @where_nodes += where_nodes.inject([]) do |memo, where_node|
-          case where_node
-          when Hash
-            where_node.each do |column, value|
-              case column
-              when String, Symbol
-                memo << table_node[column].eq(value)
-              else
-                memo << column.eq(value)
-              end
-            end
-          else
-            memo << where_node
-          end
-          memo
-        end
+      def where(*conditions)
+        where_clause.add(*conditions)
         self
       end
 

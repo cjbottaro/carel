@@ -21,9 +21,7 @@ describe Carel::Node::UpdateStatement do
       assert_cql users_table.update(name => :chris, age => 34).where(id.eq(1))
     end
 
-    # Shorthand syntax.
     it "UPDATE users SET name = 'chris', age = 34 WHERE id = 1" do
-      id = users_table[:id]
       assert_cql users_table.update(name: :chris, age: 34).where(id: 1)
     end
 

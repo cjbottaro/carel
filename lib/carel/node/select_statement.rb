@@ -3,12 +3,12 @@ module Carel
     class SelectStatement
       include Node
 
-      attr_reader :from_node, :select_nodes, :where_nodes, :order_nodes, :limit_node
+      attr_reader :from_node, :select_nodes, :where_clause, :order_nodes, :limit_node
 
       def initialize(from_node)
         @from_node = from_node
         @select_nodes = []
-        @where_nodes = []
+        @where_clause = WhereClause.new
         @order_nodes = []
         @limit_node = nil
       end
@@ -18,8 +18,8 @@ module Carel
         self
       end
 
-      def where(*where_nodes)
-        @where_nodes += where_nodes
+      def where(*conditions)
+        @where_clause.add(*conditions)
         self
       end
 

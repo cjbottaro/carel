@@ -13,8 +13,8 @@ module Carel
 
       str << "FROM" << visit(from_node)
 
-      if !where_nodes.empty?
-        str << "WHERE" << where_nodes.map{ |node| visit(node) }.join(" AND ")
+      if !where_clause.empty?
+        str << "WHERE #{visit(where_clause)}"
       end
 
       if !order_nodes.empty?
