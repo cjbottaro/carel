@@ -26,6 +26,10 @@ describe Carel::Node::WhereClause do
       assert_cql where(id: 1, name: :chris)
     end
 
+    it "id = ? AND name = ?" do
+      assert_cql where(id: Carel::BindVar, name: Carel::BindVar)
+    end
+
   end
 
 end

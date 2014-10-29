@@ -41,6 +41,8 @@ module Carel
         "{" + value.map{ |v| quote(v) }.join(", ") + "}"
       when Array
         "[" + value.map{ |v| quote(v) }.join(", ") + "]"
+      when Node::BindVar
+        "?"
       else
         value
       end

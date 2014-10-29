@@ -3,6 +3,9 @@ module Carel
 
     Star = "*"
 
+    class BindVar
+    end
+
     def to_cql
       Visitor.fetch(self.class).new(self).traverse
     end

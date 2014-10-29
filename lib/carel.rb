@@ -9,5 +9,5 @@ require "carel/node"
 require "carel/visitor"
 
 module Carel
-  # Your code goes here...
+  BindVar = Node::BindVar.new
 end
